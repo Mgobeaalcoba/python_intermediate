@@ -1,9 +1,3 @@
-# Realizar un juego del ahorcado o hangman game
-# usar comprehensions (lists o dict o ambos), manejo de errores y manejo de archivos (data.txt)
-# ayudas: investigar la función "enumerate", el metodo get de los diccionarios puede servirnos
-# ayuda adicional: la sentencia os.system("cls") servirá para limpiar pantalla
-# mejoras para el juego: Añade un sistema de puntos, dibuja el "ahorcado" en cada jugada con codigo ASCII (investigar) y mejorar la interfaz
-
 import random
 import os
 
@@ -21,36 +15,82 @@ def lenword(word):
 
 
 def changelarge(hiddenword,letter,index):
-    # print(index)
-    # print(hiddenword)
     hiddenword[index]=letter
-    # print(hiddenword)
     return hiddenword
 
 
+def imprimirpantalla(lifes):
+    print("="*20+" Bienvenido al Hangman Game "+"="*20)
+    my_list_ASCII=['''
+                    +---+
+                    |   |
+                        |
+                        |
+                        |
+                        |
+                  ========= ''', '''
+                    +---+
+                    |   |
+                    O   |
+                        |
+                        |
+                        |
+                  ========= ''', '''
+                    +---+
+                    |   |
+                    O   |
+                    |   |
+                        |
+                        |
+                  ========= ''', '''
+                    +---+
+                    |   |
+                    O   |
+                   /|   |
+                        |
+                        |
+                  ========= ''', '''
+                    +---+
+                    |   |
+                    O   |
+                   /|\  |
+                        |
+                        |
+                  ========= ''', '''
+                    +---+
+                    |   |
+                    O   |
+                   /|\  |
+                   /    |
+                        |
+                  ========= ''', '''
+                    +---+
+                    |   |
+                    O   |
+                   /|\  |
+                   / \  |
+                        |
+                  ========= ''']
+    my_list_ASCII=my_list_ASCII[::-1]
+    print(my_list_ASCII[lifes])
+
+
 def play():
-    #Comienzo del juego
     selectword=word()
     large=lenword(selectword)
-    # print(" ".join(large))
-    # print(*large, sep=" ")
 
     hits=0
     objective=len(selectword)-1
-    lifes=7
+    lifes=6
     usedletters=[]
-    # print(objective)
 
     while lifes > 0 and hits < objective:
-        # print("")
-        # print(selectword)
-        # print("")
-        # print("".join(large)) #Usar el asterisco mas la "," y sep=" " sirve para que la imprima sin los corchetes
+        imprimirpantalla(lifes)
+        print("")
+        print("Adivine la siguiente palabra. La misma cuenta con "+str(len(selectword)-1)+" caracteres.")
         print(*large, sep=" ")
         print("")
-
         letter=input("Ingrese una letra: ").upper()
-        
         assert letter.isalpha(), "Debe introducir una letra. No numeros"
         while len(letter) != 1:
             letter=input("Ingreso mas de un dígito. Ingrese solo un digito: ").upper()
@@ -60,10 +100,8 @@ def play():
         usedletters.append(letter)
         print("Las letras usadas hasta aquí son: ")
         print(*usedletters, sep=" ")
-        
         hitsbefore=hits
         for i in range(0,len(selectword)-1): 
-            # print("i vale ",i,"y el len de selectword es: ",len(selectword))
             if selectword[i] == letter:
                 hits += 1
                 print("Excelente. Ha acertado! Ha sumado 1 punto. Quedan "+str(objective-hits)+" letras por encontrar.")
@@ -77,14 +115,12 @@ def play():
         os.system("cls") 
 
     if hits == objective:
+        imprimirpantalla(lifes)
         print("¡¡¡Felictaciones!!! Usted ha ganado el juego.")
     if lifes == 0:
+        imprimirpantalla(lifes)
         print("Game Over. Vuelva a intentarlo mas tarde")
-
-    # print(hits)
-    # print(lifes)
         
-
 
 if __name__ == '__main__':
     play()
