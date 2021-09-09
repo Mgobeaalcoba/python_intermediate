@@ -14,12 +14,13 @@ def write():
     names = ["facundo", "Miguel", "Pepe", "Christian","Rocio"]
     with open("./archivos/names.txt", "w", encoding="utf-8") as f:
         for name in names:
-            f.write(name)
-            f.write("\n")
+            f.write(name+"\n")
+            #f.write("\n")
+            #f.write(",")
 
 
 def run():
-    read()
+    write()
 
 if __name__ == '__main__':
     run()
