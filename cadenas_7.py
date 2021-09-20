@@ -6,7 +6,7 @@ def run():
     mail = input("Introduzca su dirección de email: ")
     list_mail = mail.split(sep="@")
     name_mail = list_mail[0]
-    final_mail = "@ceu.es"
+    final_mail = "@ceu.es"  
     new_mail = name_mail + final_mail
     print("Su nuevo mail es: "+new_mail)
 
