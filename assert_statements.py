@@ -9,18 +9,19 @@
 # print(palindrome(""))
 
 def divisors(num):
-    divisors =[]
-    for i in range(1,num+1):
+    divisors = []
+    for i in range(1, num+1):
         if num % i == 0:
             divisors.append(i)
     return divisors
 
 
 def run():
-        num = input("Ingrese un número: ")
-        assert num.isnumeric(), "Debe introducir un numero entero positivo: " # el metodo "isnumeric() Solo funciona para cadena de caracteres
-        print(divisors(int(num)))
-        print("Termino el programa")
+    num = input("Ingrese un número: ")
+    # el metodo "isnumeric() Solo funciona para cadena de caracteres
+    assert num.isnumeric(), "Debe introducir un numero entero positivo: "
+    print(divisors(int(num)))
+    print("Termino el programa")
 
 
 if __name__ == '__main__':
@@ -28,4 +29,3 @@ if __name__ == '__main__':
 
 # Desafio: manejar como error el ingreso de un numero negativo
 # Los asserts son una alternativa al manejo de errores con el esquema try-except-raise-finally. Se recomienda combinarlos con los assert statements
-

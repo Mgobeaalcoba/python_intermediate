@@ -4,7 +4,7 @@
 
 def run():
     product = input('Introduce el nombre del producto: ')
-    price = float(input('Introducde el precio unitario: '))
+    price = float(input('Introduce el precio unitario: '))
     units = int(input('Introduce el número de unidades: '))
     print('{product}: {units:3d} unidades x {price:9.2f}€ = {total:11.2f}€'.format(product = product, units = units, price = price, total = units * price))
 

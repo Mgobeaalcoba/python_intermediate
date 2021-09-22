@@ -2,18 +2,18 @@
 
 
 def cargar_keywords():
-    my_list=[]
-    with open ("./archivos/keywords.txt ", "r", encoding="utf-8") as f:
+    my_list = []
+    with open("./archivos/keywords.txt ", "r", encoding="utf-8") as f:
         for line in f:
             my_list.append(line)
     return my_list
 
 
 def print_list(list):
-    for index , word in enumerate(list):
+    for index, word in enumerate(list):
         if index % 20 != 0 or index == 0:
             print(word)
-        else:   
+        else:
             print(word)
             input("Presione enter para continuar")
 
@@ -28,14 +28,16 @@ def run():
         [2] – Mostrar palabras clave
         [0] – Salir
         """)
-        option = int(input("Seleccione el numero de opción que desea ejecutar: "))
+        option = int(
+            input("Seleccione el numero de opción que desea ejecutar: "))
         while option < 0 or option > 2:
-            option = int(input("Opción invalida. Seleccione el numero de opción que desea ejecutar: "))
+            option = int(
+                input("Opción invalida. Seleccione el numero de opción que desea ejecutar: "))
         if option == 1:
             keywords = cargar_keywords()
-        elif option ==2:
+        elif option == 2:
             print_list(keywords)
-        else: 
+        else:
             continuar = False
 
 
